@@ -33,13 +33,13 @@ public class VentaServices {
 
     public List<VentaDTO> getAllVentas() {
         return ventaRepository.findAll().stream()
-            .map(this::toDto)
+            .map(this::toDTO)
             .collect(Collectors.toList());
     }
 
     public VentaDTO crear(VentaDTO dto) {
         Venta venta = toEntity(dto);
-        return toDto(ventaRepository.save(venta));
+        return toDTO(ventaRepository.save(venta));
     }
 
     public VentaDTO buscar(Integer id) {
@@ -53,7 +53,7 @@ public class VentaServices {
             .orElseThrow(() -> new RuntimeException("Venta no encontrada"));
         venta.setFecha(dto.getFecha());
         venta.setTotal(dto.getTotal());
-        return toDto(ventaRepository.save(venta));
+        return toDTO(ventaRepository.save(venta));
     }
 
     public void eliminar(Integer id) {

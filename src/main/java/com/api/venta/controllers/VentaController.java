@@ -15,26 +15,26 @@ public class VentaController {
     private VentaServices ventaServices;
 
     @GetMapping
-    public ResponseEntity<List<VentaDto>> getAllVentas() {
-        List<VentaDto> ventas = ventaServices.getAllVentas();
+    public ResponseEntity<List<VentaDTO>> getAllVentas() {
+        List<VentaDTO> ventas = ventaServices.getAllVentas();
         return ResponseEntity.ok(ventas);
     }
 
     @PostMapping
-    public ResponseEntity<VentaDto> crearVenta(@RequestBody VentaDto ventaDto) {
-        VentaDto nuevaVenta = ventaServices.crear(ventaDto);
+    public ResponseEntity<VentaDTO> crearVenta(@RequestBody VentaDTO ventaDto) {
+        VentaDTO nuevaVenta = ventaServices.crear(ventaDto);
         return ResponseEntity.status(201).body(nuevaVenta);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<VentaDto> buscarVenta(@PathVariable Integer id) {
-        VentaDto venta = ventaServices.buscar(id);
+    public ResponseEntity<VentaDTO> buscarVenta(@PathVariable Integer id) {
+        VentaDTO venta = ventaServices.buscar(id);
         return ResponseEntity.ok(venta);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<VentaDto> actualizarVenta(@PathVariable Integer id, @RequestBody VentaDto ventaDto) {
-        VentaDto ventaActualizada = ventaServices.actualizar(id, ventaDto);
+    public ResponseEntity<VentaDTO> actualizarVenta(@PathVariable Integer id, @RequestBody VentaDTO ventaDto) {
+        VentaDTO ventaActualizada = ventaServices.actualizar(id, ventaDto);
         return ResponseEntity.ok(ventaActualizada);
     }
 
